@@ -22,7 +22,7 @@ function App() {
         const response = await axios.get("http://localhost:5000/api/tax-sections");
         console.log("[DEBUG] Fetched tax sections:", response.data);
         if (!Array.isArray(response.data)) {
-          // throw new Error("Invalid data format");
+          throw new Error("Invalid data format");
         }        
         setSections(response.data);
       } catch (err) {
@@ -34,7 +34,6 @@ function App() {
     fetchSections();
   }, []);
 
-  // Fetch subsections when a section is selected
   useEffect(() => {
     if (!selectedSection) return;
 
@@ -58,7 +57,6 @@ function App() {
     fetchSubSections();
   }, [selectedSection]);
 
-  // Fetch categories when a subsection is selected
   useEffect(() => {
     if (!selectedSubSection) return;
 
@@ -80,7 +78,6 @@ function App() {
     fetchCategories();
   }, [selectedSubSection]);
 
-  // Fetch subcategories when a category is selected
   useEffect(() => {
     if (!selectedCategory) return;
 

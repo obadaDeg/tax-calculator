@@ -7,7 +7,6 @@ const morgan = require('morgan');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// PostgreSQL connection pool
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
@@ -16,15 +15,12 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-// ---------- API ROUTES ----------
 
-// Get all tax sections
 app.get('/api/tax-sections', async (req, res) => {
   console.log('[REQUEST] GET /api/tax-sections');
   try {
@@ -37,7 +33,6 @@ app.get('/api/tax-sections', async (req, res) => {
   }
 });
 
-// Get subsections for a section
 app.get('/api/tax-subsections/:sectionId', async (req, res) => {
   const { sectionId } = req.params;
   console.log(`[REQUEST] GET /api/tax-subsections/${sectionId}`);
@@ -54,7 +49,6 @@ app.get('/api/tax-subsections/:sectionId', async (req, res) => {
   }
 });
 
-// Get categories for a subsection
 app.get('/api/tax-categories/:subSectionId', async (req, res) => {
   const { subSectionId } = req.params;
   console.log(`[REQUEST] GET /api/tax-categories/${subSectionId}`);
@@ -71,7 +65,6 @@ app.get('/api/tax-categories/:subSectionId', async (req, res) => {
   }
 });
 
-// Get subcategories for a category
 app.get('/api/tax-subcategories/:categoryId', async (req, res) => {
   const { categoryId } = req.params;
   console.log(`[REQUEST] GET /api/tax-subcategories/${categoryId}`);
@@ -88,7 +81,6 @@ app.get('/api/tax-subcategories/:categoryId', async (req, res) => {
   }
 });
 
-// Calculate tax based on subcategory, filer status, and gross amount
 app.post('/api/calculate-tax', async (req, res) => {
   const { subCategoryId, filerStatus, grossAmount } = req.body;
   console.log('[REQUEST] POST /api/calculate-tax');
@@ -126,12 +118,6 @@ app.post('/api/calculate-tax', async (req, res) => {
   }
 });
 
-// // Fallback for React client-side routing (uncomment for production)
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-// });
-
-// Start server
 app.listen(PORT, () => {
   console.log(`[STARTUP] Server running on port ${PORT}`);
 });
