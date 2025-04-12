@@ -1,10 +1,10 @@
 # Pakistan Tax Calculator
 
-![Pakistan Tax Calculator](docs\localhost_5173_.png)
+![Pakistan Tax Calculator](docs/localhost_5173_.png)
 
 ## Overview
 
-Pakistan Tax Calculator is a web application designed to help users calculate taxes according to ![Pakistan's tax regulations for the year 2025](docs\WithHoldingRatesTaxYear2025.pdf). The application provides a user-friendly interface for selecting tax categories and calculating tax amounts based on income and filer status.
+Pakistan Tax Calculator is a web application designed to help users calculate taxes according to ![Pakistan's tax regulations for the year 2025](docs/WithHoldingRatesTaxYear2025.pdf). The application provides a user-friendly interface for selecting tax categories and calculating tax amounts based on income and filer status.
 
 ## Features
 
