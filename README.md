@@ -59,7 +59,7 @@ psql -U postgres -d tax_calculator -f schema.sql
 ### Server Setup
 1. Clone the repository
 ```bash
-git clone https://github.com/username/pakistan-tax-calculator.git
+git clone https://github.com/obadaDeg/tax-calculator.git
 cd pakistan-tax-calculator
 ```
 
@@ -171,4 +171,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-Project Link: [https://github.com/username/pakistan-tax-calculator](https://github.com/username/pakistan-tax-calculator)
+Project Link: [https://github.com/obadaDeg/tax-calculator](https://github.com/obadaDeg/tax-calculator)
