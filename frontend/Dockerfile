@@ -1,7 +1,7 @@
 # building the frontend
 FROM node:20-alpine AS builder
 WORKDIR /app
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json* ./
 RUN npm install
 COPY . .
 RUN npm run build
@@ -10,6 +10,6 @@ RUN npm run build
 FROM node:20-alpine
 WORKDIR /app
 RUN npm install -g serve
-COPY --from=builder /app/build ./build
-EXPOSE 4444
-CMD ["serve", "-s", "dist", "-l", "4444"]
+COPY --from=builder /app/dist ./dist
+EXPOSE 80
+CMD ["serve", "-s", "dist", "-l", "80"]
