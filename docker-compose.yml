@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_USER=postgres
+      - DB_PASSWORD=abaomar
+      - DB_HOST=host.docker.internal
+      - DB_PORT=8888
+      - DB_NAME=tax_calculator
+    depends_on:
+      - db
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=abaomar
+      - POSTGRES_DB=tax_calculator
+    ports:
+      - "8888:8888"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
